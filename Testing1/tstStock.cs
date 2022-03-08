@@ -57,6 +57,19 @@ namespace Testing6
         }
 
         [TestMethod]
+        public void TotalPricePropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //create some test data to assign to the property
+            Int32 TestData = 1;
+            //assign the data to the property
+            AnStock.TotalPrice = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnStock.TotalPrice, TestData);
+        }
+
+        [TestMethod]
         public void ItemQuantityPropertyOK()
         {
             //create an instance of the class we want to create
@@ -110,5 +123,6 @@ namespace Testing6
         public Int32 ItemQuantity { get; internal set; }
         public global::System.String StockName { get; internal set; }
         public global::System.Object StockAvailability { get; internal set; }
+        public int TotalPrice { get; internal set; }
     }
 }
