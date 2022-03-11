@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using ClassLibrary;\
+using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
@@ -18,6 +18,27 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStock AnStock = new clsStock();
         AnStock.StockID = txtStockID.Text;
         Session["AnStock"] = AnStock;
-        Response.Redirect("StockViewer.aspx");  
+        Response.Redirect("StockViewer.aspx");
+
+        AnStock.StockName = txtStockName.Text;
+        Session["AnStock"] = AnStock;
+        Response.Redirect("StockViewer.aspx");
+
+        AnStock.ItemQuantity = txtItemQuantity.Text;
+        Session["AnStock"] = AnStock;
+        Response.Redirect("StockViewer.aspx");
+
+        AnStock.TotalPrice = txtTotalPrice.Text;
+        Session["AnStock"] = AnStock;
+        Response.Redirect("StockViewer.aspx");
+
+        AnStock.RestockDate = txtRestockDate.Text;
+        Session["AnStock"] = AnStock;
+        Response.Redirect("StockViewer.aspx");
+
+
+
+
+
     }
 }
