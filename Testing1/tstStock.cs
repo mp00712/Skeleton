@@ -1,8 +1,8 @@
-﻿using ClassLibrary;
+﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System;
+using ClassLibrary;
 
-namespace Testing1
+namespace Testing6
 {
     [TestClass]
     public class tstStock
@@ -10,122 +10,119 @@ namespace Testing1
         [TestMethod]
         public void InstanceOK()
         {
+            //create an instance of the class we want to create
             clsStock AnStock = new clsStock();
+            //test to see that it exists
             Assert.IsNotNull(AnStock);
         }
 
         [TestMethod]
         public void ActivePropertyOK()
         {
+            //create an instance of the class we want to create
             clsStock AnStock = new clsStock();
+            //create some test data to assign to the property
             Boolean TestData = true;
+            //assign the data to the property
             AnStock.Active = TestData;
+            //test to see that the two values are the same
             Assert.AreEqual(AnStock.Active, TestData);
         }
-        
+
         [TestMethod]
-            public void DateAddedPropertyOK()
-            {
-                //create an instance of the class we want to create
-                clsStock AnStock = new clsStock();
-                //create some test data to assign to the property
-                DateTime TestData = DateTime.Now.Date;
-                //assign the data to the property
-                AnStock.DateAdded = TestData;
-                //test to see that the two values are the same
-                Assert.AreEqual(AnStock.DateAdded, TestData);
-            }
-
-
-            [TestMethod]
-            public void StockNoPropertyOK()
-            {
-                //create an instance of the class we want to create
-                clsStock AnStock = new clsStock();
-                //create some test data to assign to the property
-                Int32 TestData = 1;
-                //assign the data to the property
-                AnStock.StockNo = TestData;
-                //test to see that the two values are the same
-                Assert.AreEqual(AnStock.StockNo, TestData);
-            }
-
-            [TestMethod]
-            public void CountyNoPropertyOK()
-            {
-                //create an instance of the class we want to create
-                clsStock AnStock = new clsStock();
-                //create some test data to assign to the property
-                Int32 TestData = 1;
-                //assign the data to the property
-                AnStock.CountyNo = TestData;
-                //test to see that the two values are the same
-                Assert.AreEqual(AnStock.CountyNo, TestData);
-            }
-
-            [TestMethod]
-            public void HouseNoPropertyOK()
-            {
-                //create an instance of the class we want to create
-                clsStock AnStock = new clsStock();
-                //create some test data to assign to the property
-                string TestData = "21b";
-                //assign the data to the property
-                AnStock.HouseNo = TestData;
-                //test to see that the two values are the same
-                Assert.AreEqual(AnStock.HouseNo, TestData);
-            }
-
-            [TestMethod]
-            public void PostCodePropertyOK()
-            {
-                //create an instance of the class we want to create
-                clsStock AnStock = new clsStock();
-                //create some test data to assign to the property
-                string TestData = "LE1 4AB";
-                //assign the data to the property
-                AnStock.PostCode = TestData;
-                //test to see that the two values are the same
-                Assert.AreEqual(AnStock.PostCode, TestData);
-            }
-
-            [TestMethod]
-            public void StreetPropertyOK()
-            {
-                //create an instance of the class we want to create
-                clsStock AnStock = new clsStock();
-                //create some test data to assign to the property
-                string TestData = "Some Street";
-                //assign the data to the property
-                AnStock.Street = TestData;
-                //test to see that the two values are the same
-                Assert.AreEqual(AnStock.Street, TestData);
-            }
-
-            [TestMethod]
-            public void TownPropertyOK()
-            {
-                //create an instance of the class we want to create
-                clsStock AnStock = new clsStock();
-                //create some test data to assign to the property
-                string TestData = "Leicester";
-                //assign the data to the property
-                AnStock.Town = TestData;
-                //test to see that the two values are the same
-                Assert.AreEqual(AnStock.Town, TestData);
-            }
+        public void RestockDatePropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //create some test data to assign to the property
+            DateTime TestData = DateTime.Now.Date;
+            //assign the data to the property
+            AnStock.RestockDate = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnStock.RestockDate, TestData);
         }
+
+
+        [TestMethod]
+        public void StockIDPropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //create some test data to assign to the property
+            Int32 TestData = 1;
+            //assign the data to the property
+            AnStock.StockID = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnStock.StockID, TestData);
+        }
+
+        [TestMethod]
+        public void TotalPricePropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //create some test data to assign to the property
+            Int32 TestData = 1;
+            //assign the data to the property
+            AnStock.TotalPrice = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnStock.TotalPrice, TestData);
+        }
+
+        [TestMethod]
+        public void ItemQuantityPropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //create some test data to assign to the property
+            Int32 TestData = 1;
+            //assign the data to the property
+            AnStock.ItemQuantity = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnStock.ItemQuantity, TestData);
+        }
+
+        [TestMethod]
+        public void StockNamePropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //create some test data to assign to the property
+            string TestData = "Test";
+            //assign the data to the property
+            AnStock.StockName = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnStock.StockName, TestData);
+        }
+
+        [TestMethod]
+        public void StockAvailabilityPropertyOK()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //create some test data to assign to the property
+            Boolean TestData = true;
+            //assign the data to the property
+            AnStock.StockAvailability = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnStock.StockAvailability, TestData);
+        }
+
+
+    }
 
     internal class clsStock
     {
-        public bool Active { get; internal set; }
-        public DateTime DateAdded { get; internal set; }
-        public int CountyNo { get; internal set; }
-        public string HouseNo { get; internal set; }
-        public string PostCode { get; internal set; }
-        public string Town { get; internal set; }
-        public int StockNo { get; internal set; }
-        public string Street { get; internal set; }
+        public clsStock()
+        {
+        }
+
+        public Boolean Active { get; internal set; }
+        public DateTime RestockDate { get; internal set; }
+        public Int32 StockID { get; internal set; }
+        public Int32 ItemQuantity { get; internal set; }
+        public global::System.String StockName { get; internal set; }
+        public global::System.Object StockAvailability { get; internal set; }
+        public int TotalPrice { get; internal set; }
     }
 }
-
