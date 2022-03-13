@@ -14,4 +14,8 @@ namespace Testing2
 
         }
     }
+
+    internal class clsStaff
+    {
+    }
 }

@@ -36,9 +36,5 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Session["AnStock"] = AnStock;
         Response.Redirect("StockViewer.aspx");
 
-
-
-
-
     }
 }
