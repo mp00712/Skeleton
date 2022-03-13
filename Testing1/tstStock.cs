@@ -108,8 +108,39 @@ namespace Testing6
             Assert.AreEqual(AnStock.StockAvailability, TestData);
         }
 
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsStock AnStock = new clsStock();
+            Boolean Found = false;
+            Int32 StockID = 1;
+            Found = AnStock.Find(StockID);
+            Assert.IsTrue(Found);
+
+
+        }
+
+        [TestMethod]
+        public void TestStockIDFound()
+        {
+            clsStock AnStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 StockID = 2;
+            Found = AnStock.Find(StockID);
+            if (AnStock.StockID != 2)
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        }
+
 
     }
+
+
+   
 
     internal class clsStock
     {
@@ -117,12 +148,33 @@ namespace Testing6
         {
         }
 
+
+
         public Boolean Active { get; internal set; }
         public DateTime RestockDate { get; internal set; }
-        public Int32 StockID { get; internal set; }
+        public Int32 StockID
+            {
+                get
+                {
+                    return mStockID;
+                }
+                set
+                {
+                    mStockID = value;
+                }
+            }
         public Int32 ItemQuantity { get; internal set; }
         public global::System.String StockName { get; internal set; }
         public global::System.Object StockAvailability { get; internal set; }
         public int TotalPrice { get; internal set; }
+
+
+        public bool Find(int StockID)
+        {
+            return true;
+        }
+
     }
+
 }
+
