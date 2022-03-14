@@ -12,18 +12,14 @@ public partial class StockViewer : System.Web.UI.Page
     {
         clsStock AnStock = new clsStock();
         AnStock = (clsStock)Session["AnStock"];
-        Response.Write(AnStock.StockID);
+        Response.Write(AnStock.StockID + "\n");
 
-        AnStock = (clsStock)Session["AnStock"];
-        Response.Write(AnStock.StockName);
+        Response.Write(AnStock.StockName + "\n");
 
-        AnStock = (clsStock)Session["AnStock"];
-        Response.Write(AnStock.ItemQuantity);
+        Response.Write(AnStock.ItemQuantity + "\n");
 
-        AnStock = (clsStock)Session["AnStock"];
-        Response.Write(AnStock.TotalPrice);
+        Response.Write(AnStock.TotalPrice + "\n");
 
-        AnStock = (clsStock)Session["AnStock"];
-        Response.Write(AnStock.RestockDate);
+        Response.Write(AnStock.RestockDate + "\n");
     }
 }

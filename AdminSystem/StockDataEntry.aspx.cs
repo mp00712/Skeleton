@@ -16,23 +16,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void btnOK_Click(object sender, EventArgs e)
     {
         clsStock AnStock = new clsStock();
-        AnStock.StockID = txtStockID.Text;
-        Session["AnStock"] = AnStock;
-        Response.Redirect("StockViewer.aspx");
+        AnStock.StockID = Convert.ToInt32(txtStockID.Text);
+
 
         AnStock.StockName = txtStockName.Text;
-        Session["AnStock"] = AnStock;
-        Response.Redirect("StockViewer.aspx");
 
-        AnStock.ItemQuantity = txtItemQuantity.Text;
-        Session["AnStock"] = AnStock;
-        Response.Redirect("StockViewer.aspx");
 
-        AnStock.TotalPrice = txtTotalPrice.Text;
-        Session["AnStock"] = AnStock;
-        Response.Redirect("StockViewer.aspx");
+        AnStock.ItemQuantity = Convert.ToInt32(txtItemQuantity.Text);
 
-        AnStock.RestockDate = txtRestockDate.Text;
+
+        AnStock.TotalPrice = Convert.ToInt32(txtTotalPrice.Text);
+
+
+        AnStock.RestockDate = Convert.ToDateTime(txtRestockDate.Text);
+
+        AnStock.StockAvailability = Convert.ToBoolean(chkStockAvailability.Checked);
         Session["AnStock"] = AnStock;
         Response.Redirect("StockViewer.aspx");
 

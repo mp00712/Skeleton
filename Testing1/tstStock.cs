@@ -139,42 +139,5 @@ namespace Testing6
 
     }
 
-
-   
-
-    internal class clsStock
-    {
-        public clsStock()
-        {
-        }
-
-
-
-        public Boolean Active { get; internal set; }
-        public DateTime RestockDate { get; internal set; }
-        public Int32 StockID
-            {
-                get
-                {
-                    return mStockID;
-                }
-                set
-                {
-                    mStockID = value;
-                }
-            }
-        public Int32 ItemQuantity { get; internal set; }
-        public global::System.String StockName { get; internal set; }
-        public global::System.Object StockAvailability { get; internal set; }
-        public int TotalPrice { get; internal set; }
-
-
-        public bool Find(int StockID)
-        {
-            return true;
-        }
-
-    }
-
 }
 
