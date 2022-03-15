@@ -27,7 +27,9 @@ namespace ClassLibrary
 
         public bool Find(int StockID)
         {
+            mStockID = 2;
             return true;
         }
+
     }
 }
