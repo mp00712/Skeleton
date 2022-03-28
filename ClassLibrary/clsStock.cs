@@ -129,7 +129,7 @@ namespace ClassLibrary
 
 
 
-        public bool Find(int StockID)
+        public bool Find(int StocID)
         {
             //set the private data members to the test data value
             mStockID = 1;
@@ -140,6 +140,29 @@ namespace ClassLibrary
             mStockAvailability = true;
             //always return true
             return true;
+        }
+
+        public bool Find(int StockID)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter(StockID, StockID);
+            DB.Execute("sproc_tblStock_FilterbyStockID");
+            if (DB.Count == 1)
+            {
+                mStockID = Convert.ToInt32(DB.DataTable.Rows[0]["StockID"]);
+                mStockName = Convert.ToString(DB.DataTable.Rows[0]["StockName"]);
+                mItemQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["ItemQuantity"]);
+                mTotalPrice = Convert.ToInt32(DB.DataTable.Rows[0]["TotalPrice"]);
+                mRestockDate = Convert.ToDateTime(DB.DataTable.Rows[0]["RestockDate"]);
+                mStockAvailability = Convert.ToBoolean(DB.DataTable.Rows[0]["StockAvailability"];
+
+                return true;
+            }
+
+            else
+            {
+                return false;
+            }
         }
     }
 }
