@@ -35,4 +35,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Response.Redirect("StockViewer.aspx");
 
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsStock AnStock = new clsStock();
+        Int32 StockID;
+        Boolean Found = false;
+        StockID = Convert.ToInt32(txtStockID.Text);
+        Found = AnStock.Find(StockID);
+        if (Found == true)
+        {
+            txtStockID.Text = AnStock.StockID;
+            txtStockName.Text = AnStock.StockName;
+            txtItemQuantity.Text = AnStock.ItemQuantity;
+            txtTotalPrice.Text = AnStock.TotalPrice;
+            txtRestockDate.Text = AnStock.RestockDate.ToString;
+        }
+    }
 }

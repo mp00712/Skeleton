@@ -109,7 +109,7 @@ namespace Testing6
         }
 
         [TestMethod]
-        public void FindMethodOK()
+        public void StockIDFindMethodOK()
         {
             clsStock AnStock = new clsStock();
             Boolean Found = false;
@@ -119,23 +119,6 @@ namespace Testing6
 
 
         }
-
-        [TestMethod]
-        public void TestStockIDFound()
-        {
-            clsStock AnStock = new clsStock();
-            Boolean Found = false;
-            Boolean OK = true;
-            Int32 StockID = 2;
-            Found = AnStock.Find(StockID);
-            if (AnStock.StockID != 2)
-            {
-                OK = false;
-            }
-
-            Assert.IsTrue(OK);
-        }
-
 
         [TestMethod]
         public void TestItemQuantityFound()
