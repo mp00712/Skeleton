@@ -36,7 +36,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-    protected void btnFind_Click(object sender, EventArgs e)
+    protected void btnFind_Click1(object sender, EventArgs e)
     {
         clsStock AnStock = new clsStock();
         Int32 StockID;
@@ -45,11 +45,22 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Found = AnStock.Find(StockID);
         if (Found == true)
         {
-            txtStockID.Text = AnStock.StockID;
             txtStockName.Text = AnStock.StockName;
-            txtItemQuantity.Text = AnStock.ItemQuantity;
-            txtTotalPrice.Text = AnStock.TotalPrice;
-            txtRestockDate.Text = AnStock.RestockDate.ToString;
+            txtItemQuantity.Text = AnStock.ItemQuantity.ToString();
+            txtTotalPrice.Text = AnStock.TotalPrice.ToString();
+            txtRestockDate.Text = AnStock.RestockDate.ToString();
+            chkStockAvailability.Checked = AnStock.StockAvailability;
+            lblError.Text = "";
+        }
+        else
+        {
+            txtStockName.Text = "--";
+            txtItemQuantity.Text = "--";
+            txtTotalPrice.Text = "--";
+            txtRestockDate.Text = "--";
+            chkStockAvailability.Checked = AnStock.StockAvailability;
+            lblError.Text = "Error - No Stock Found" + StockID;
+
         }
     }
 }
