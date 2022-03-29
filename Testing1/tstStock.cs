@@ -109,7 +109,7 @@ namespace Testing6
         }
 
         [TestMethod]
-        public void StockIDFindMethodOK()
+        public void FindMethodOK()
         {
             clsStock AnStock = new clsStock();
             Boolean Found = false;
@@ -118,6 +118,27 @@ namespace Testing6
             Assert.IsTrue(Found);
 
 
+        }
+
+        public void TestStockIDFound()
+        {
+            //create an instance of the class we want to create
+            clsStock AnStock = new clsStock();
+            //boolean variable to store the result of the search
+            Boolean Found = false;
+            //boolean variable to record if data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 StockID = 2;
+            //invoke the method
+            Found = AnStock.Find(StockID);
+            //check the address no
+            if (AnStock.StockID != 2)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
         }
 
         [TestMethod]
@@ -152,7 +173,7 @@ namespace Testing6
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StockName = 21;
+            Int32 StockName = 2;
             //invoke the method
             Found = AnStock.Find(StockName);
             //check the property
@@ -175,11 +196,11 @@ namespace Testing6
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 TotalPrice = 21;
+            Int32 TotalPrice = 2;
             //invoke the method
             Found = AnStock.Find(TotalPrice);
             //check the property
-            if (AnStock.TotalPrice != 2)
+            if (AnStock.TotalPrice != 3)
             {
                 OK = false;
             }
@@ -197,7 +218,7 @@ namespace Testing6
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 RestockDate = 21;
+            Int32 RestockDate = 1;
             //invoke the method
             Found = AnStock.Find(RestockDate);
             //check the property
