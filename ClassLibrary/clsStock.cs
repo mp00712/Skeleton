@@ -127,8 +127,6 @@ namespace ClassLibrary
             }
         }
 
-
-
         public bool Find(int StockID)
         {
             clsDataConnection DB = new clsDataConnection();
@@ -151,6 +149,29 @@ namespace ClassLibrary
             {
                 return false;
             }
+        }
+
+
+        public string Valid(string StockID, string StockName, string ItemQuantity, string TotalPrice, string RestockDate)
+        {
+            String Error = "";
+            if (StockID.Length == 0)
+            {
+                Error = Error + "The StockID may not be blank : ";
+            }
+
+            if (StockID.Length > 6)
+            {
+                Error = Error + "The StockID must not be more than 6 characters : ";
+            }
+
+            DateTemp = Convert.ToDateTime(RestockDate);
+            if (DateTemp < DateTime.Now.Date) ;
+            {
+                Error = Error + "The Date can not be in the past");
+            }
+
+            return Error;
         }
     }
 }
