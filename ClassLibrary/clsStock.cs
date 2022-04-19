@@ -151,27 +151,80 @@ namespace ClassLibrary
             }
         }
 
-
-        public string Valid(string StockID, string StockName, string ItemQuantity, string TotalPrice, string RestockDate)
+        public string Valid(string stockID, string stockName, string itemQuantity, string totalPrice, string restockDate)
         {
             String Error = "";
-            if (StockID.Length == 0)
+            DateTime DateTemp;
+            if (stockID.Length == 0)
             {
                 Error = Error + "The StockID may not be blank : ";
             }
 
-            if (StockID.Length > 6)
+            if(stockID.Length > 6)
             {
-                Error = Error + "The StockID must not be more than 6 characters : ";
+                Error = Error + "The StockID must be less than 6 characters : ";
             }
 
-            DateTemp = Convert.ToDateTime(RestockDate);
-            if (DateTemp < DateTime.Now.Date) ;
+            try
             {
-                Error = Error + "The Date can not be in the past");
+
+                DateTemp = Convert.ToDateTime(restockDate);
+                if (DateTemp < DateTime.Now.Date)
+                {
+                    Error = Error + "The date cannot be in the past :";
+                }
+
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    //record the error
+                    Error = Error + "The date cannot be in the future : ";
+                }
             }
+            catch
+            {
+                Error = Error + "The date cannot be in the future : ";
+            }
+
+            //is the post code blank
+            if (totalPrice.Length == 0)
+            {
+                //record the error
+                Error = Error + "The post code may not be blank : ";
+            }
+            //if the post code is too long
+            if (totalPrice.Length > 9)
+            {
+                //record the error
+                Error = Error + "The post code must be less than 9 characters : ";
+            }
+            //is the street blank
+            if (stockName.Length == 0)
+            {
+                //record the error
+                Error = Error + "The street may not be blank : ";
+            }
+            //if the street is too long
+            if (stockName.Length > 50)
+            {
+                //record the error
+                Error = Error + "The street must be less than 50 characters : ";
+            }
+            //is the town blank
+            if (itemQuantity.Length == 0)
+            {
+                //record the error
+                Error = Error + "The town may not be blank : ";
+            }
+            //if the town is too long
+            if (itemQuantity.Length > 50)
+            {
+                //record the error
+                Error = Error + "The town must be less than 50 characters : ";
+            }
+
 
             return Error;
+
         }
     }
 }
