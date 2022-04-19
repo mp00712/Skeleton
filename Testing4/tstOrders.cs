@@ -1,18 +1,18 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 
-namespace Testing2
+namespace Testing4
 {
     [TestClass]
-    public class tstStaff
+    public class tstOrders
     {
         [TestMethod]
-        public void InstaneOK()
+        public void InstanceOK()
         {
             //create an instance of the class we want to create
-            clsStaff AnStaff = new clsStaff();
+            clsOrders AnOrders = new clsOrders();
             //test to see that it exists
-            Assert.IsNotNull(AnStaff);
+            Assert.IsNotNull(AnOrders);
 
         }
     }
