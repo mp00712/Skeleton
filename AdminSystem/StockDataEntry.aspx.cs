@@ -21,6 +21,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         String ItemQuantity = txtItemQuantity.Text;
         String TotalPrice = txtTotalPrice.Text;
         String RestockDate = txtRestockDate.Text;
+        String StockAvailability = chkStockAvailability.Checked.ToString();
         string Error = "";
         Error = AnStock.Valid(StockID, StockName, ItemQuantity, TotalPrice, RestockDate);
         if (Error == "")
@@ -30,8 +31,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnStock.ItemQuantity = Convert.ToInt32(ItemQuantity);
             AnStock.TotalPrice = Convert.ToInt32(TotalPrice);
             AnStock.RestockDate = Convert.ToDateTime(RestockDate);
+            AnStock.StockAvailability = Convert.ToBoolean(chkStockAvailability);
+
             Session["AnStock"] = AnStock;
             Response.Redirect("StockViewer.aspx");
+            
         }
 
         else
