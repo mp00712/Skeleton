@@ -169,12 +169,12 @@ namespace ClassLibrary
             {
 
                 DateTemp = Convert.ToDateTime(restockDate);
-                if (DateTemp < DateTime.Now.Date)
+                if (DateTemp < DateTime.Now.Date.AddYears(-25))
                 {
                     Error = Error + "The date cannot be in the past :";
                 }
 
-                if (DateTemp > DateTime.Now.Date)
+                if (DateTemp > DateTime.Now.Date.AddYears(50))
                 {
                     //record the error
                     Error = Error + "The date cannot be in the future : ";

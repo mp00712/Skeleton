@@ -8,10 +8,6 @@ namespace Test_Framework
     [TestClass]
     public class tstStockCollection
     {
-        [TestMethod]
-        public void TestMethod()
-        {
-        }
 
         [TestMethod]
         public void InstanceOK()
@@ -74,6 +70,26 @@ namespace Test_Framework
             Assert.AreEqual(AllStock.Count, TestList.Count);
         }
 
+        [TestMethod]
+
+        public void AddMethodOK()
+        {
+            clsStockcollection AllStock = new clsStockcollection();
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+            TestItem.Active = true;
+            TestItem.StockID = 2;
+            TestItem.StockName = "Hand Sanitizer";
+            TestItem.ItemQuantity = 50;
+            TestItem.TotalPrice = 3;
+            TestItem.RestockDate = DateTime.Now.Date;
+
+            AllStock.ThisStock = TestItem;
+            PrimaryKey = AllStock.Add();
+            TestItem.StockID = PrimaryKey;
+            AllStock.ThisStock.Find(PrimaryKey);
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+        }
 
     }
 }

@@ -387,13 +387,13 @@ namespace Testing6
             //set the date totodays date
             TestDate = DateTime.Now.Date;
             //change the date to whatever the date is less 1 day
-            TestDate = TestDate.AddDays(-1);
+            TestDate = TestDate.AddYears(-1);
             //convert the date variable to a string variable
             string RestockDate = TestDate.ToString();
             //invoke the method
             Error = AnStock.Valid(StockID, StockName, ItemQuantity, TotalPrice, RestockDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
@@ -432,7 +432,7 @@ namespace Testing6
             //invoke the method
             Error = AnStock.Valid(StockID, StockName, ItemQuantity, TotalPrice, RestockDate);
             //test to see that the result is correct
-            Assert.AreNotEqual(Error, "");
+            Assert.AreEqual(Error, "");
         }
 
         [TestMethod]
