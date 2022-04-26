@@ -31,9 +31,11 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnStock.ItemQuantity = Convert.ToInt32(ItemQuantity);
             AnStock.TotalPrice = Convert.ToInt32(TotalPrice);
             AnStock.RestockDate = Convert.ToDateTime(RestockDate);
-            AnStock.StockAvailability = Convert.ToBoolean(chkStockAvailability);
+            AnStock.Active = Convert.ToBoolean(StockAvailability);
 
-            Session["AnStock"] = AnStock;
+            clsStockcollection StockList = new clsStockcollection();
+            StockList.ThisStock = AnStock;
+            StockList.Add();
             Response.Redirect("StockViewer.aspx");
             
         }

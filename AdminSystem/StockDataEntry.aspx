@@ -24,11 +24,11 @@
             <asp:Label ID="lblTotalPrice" runat="server" height="29px" Text="Total Price"></asp:Label>
 &nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="txtTotalPrice" runat="server" height="29px"></asp:TextBox>
-            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click1" Text="Find" />
             <br />
             <asp:Label ID="lblRestockDate" runat="server" height="29px" Text="Restock Date"></asp:Label>
 &nbsp;
             <asp:TextBox ID="txtRestockDate" runat="server" height="29px"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" OnClick="btnFind_Click1" Text="Find" style="margin-bottom: 0px" />
             <br />
             <br />
             <asp:CheckBox ID="chkStockAvailability" runat="server" height="29px" Text="StockAvailability" />
