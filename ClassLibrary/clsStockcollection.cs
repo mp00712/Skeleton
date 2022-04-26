@@ -78,7 +78,7 @@ namespace ClassLibrary
             DB.AddParameter("@ItemQuantity", mThisStock.ItemQuantity);
             DB.AddParameter("@TotalPrice", mThisStock.TotalPrice);
             DB.AddParameter("@RestockDate", mThisStock.RestockDate);
-            DB.AddParameter("@StockAvailability", mThisStock.Active);
+            DB.AddParameter("@StockAvailability", mThisStock.StockAvailability);
 
             return DB.Execute("sproc_tblStock_Insert");
 
