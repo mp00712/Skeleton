@@ -24,7 +24,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         String OrderDate = txtOrderDate.Text;
         String Shipment = chKShipment.Checked.ToString();
         string Error = "";
-        Error = AnOrder.Valid(OrderID, StockID, ItemQuantity, TotalPrice, OrderDate);
+        Error = AnOrder.Valid( StockID, ItemQuantity, TotalPrice, OrderDate);
         if (Error == "")
         {
             AnOrder.OrderID = Convert.ToInt32(OrderID);
@@ -37,5 +37,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         Session["AnOrder"] = AnOrder;
         Response.Redirect("OrdersViewer.aspx");
+    }
+
+    protected void btnFind_Click1(object sender, EventArgs e)
+    {
+        clsOrders AnOrder = new clsOrders();
+        Int32 OrderID;
+        Boolean Found = false;
+        OrderID = Convert.ToInt32(txtOrderID.Text);
+        Found = AnOrder.Find(OrderID);
+        if (Found == true)
+        {
+            txtStockID.Text = AnOrder.StockID.ToString();
+            txtItemQuantity.Text = AnOrder.ItemQuantity.ToString();
+            txtTotalPrice.Text = AnOrder.TotalPrice.ToString();
+            txtOrderDate.Text = AnOrder.OrderDate.ToString();
+            chKShipment.Checked = AnOrder.Shipment;
+            lblError.Text = "";
+        }
     }
 }
