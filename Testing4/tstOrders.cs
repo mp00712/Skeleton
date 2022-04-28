@@ -1,14 +1,19 @@
 ﻿using ClassLibrary;
-
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Testing4
 {
     [TestClass]
     public class tstOrders
     {
+        string OrderID = "1";
+        string StockID = "1";
+        string ItemQuantity = "2";
+        string TotalPrice = "4";
+        string OrderDate = DateTime.Now.Date.ToString();
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -81,12 +86,12 @@ namespace Testing4
             Assert.IsTrue(Found);
         }
         [TestMethod]
-        public void TestOrderIdFound()
+        public void TestOrderIDFound()
         {
             clsOrders AnOrder = new clsOrders();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 32;
+            Int32 OrderID = 1;
             Found = AnOrder.Find(OrderID);
             if (AnOrder.OrderID != 1)
             {
@@ -95,5 +100,370 @@ namespace Testing4
             Assert.IsTrue(OK);
         }
 
+        [TestMethod]
+        public void TestStockIDFound()
+        {
+            clsOrders AnOrder = new clsOrders();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderID = 1;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.StockID != 1)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestItemQuantityFound()
+        {
+            clsOrders AnOrder = new clsOrders();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderID = 1;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.ItemQuantity != 2)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestTotalPriceFound()
+        {
+            clsOrders AnOrder = new clsOrders();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderID = 1;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.TotalPrice != 4)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestOrderDateFound()
+        {
+            clsOrders AnOrder = new clsOrders();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderID = 1;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.OrderDate != Convert.ToDateTime("30/03/2022"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestShipmentFound()
+        {
+            clsOrders AnOrder = new clsOrders();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderID = 1;
+            Found = AnOrder.Find(OrderID);
+            if (AnOrder.Shipment != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            Error = AnOrder.Valid(StockID,ItemQuantity,TotalPrice,OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockIDMinLessOne()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            String StockID = "";
+            Error = AnOrder.Valid(StockID,ItemQuantity,TotalPrice,OrderDate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockIDMin()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string StockID = "a";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockIDMinPlusOne()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string StockID = "aa";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockIDMaxLessOne()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string StockID = "aaaaa";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void StockIDMax()
+        {
+            clsOrders AnOrder = new clsOrders();           
+            String Error = "";
+            string StockID = "aaaaaa"; //this should be ok
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockIDMid()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string StockID = "aaa"; //this should be ok
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockIDMaxPlusOne()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string StockID = "aaaaaaa"; //this should be ok
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockIDExtremeMax()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string StockID = "";
+            StockID = StockID.PadRight(500, 'a');
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreNotEqual(Error, "");
+
+        }
+        [TestMethod]
+        public void OrderDateExtremeMin()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(-100);
+            string OrderDate = TestDate.ToString();
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDateMinLessOne()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(-1);
+            string OrderDate = TestDate.ToString();
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDateMin()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            string OrderDate = TestDate.ToString();
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void OrderDateMinPlusOne()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddDays(1);
+            string OrderDate = TestDate.ToString();
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateExtremeMax()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            TestDate = TestDate.AddYears(100);
+            string OrderDate = TestDate.ToString();
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void OrderDateInvalidDataType()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string OrderDate = "this is not a date!";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ItemQuantityMinLessOne()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string ItemQuantity = "";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void ItemQuantityMin()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string ItemQuantity = "a";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ItemQuantityMinPlusOne()
+        {
+                clsOrders AnOrder = new clsOrders();
+                String Error = "";
+                string ItemQuantity = "aa";
+                Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+                Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ItemQuantityMaxLessOne()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string ItemQuantity = "aaaaaaaa";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ItemQuantityMax()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string ItemQuantity = "aaaaaaaaa";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void ItemQuantityMaxPlusOne()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string ItemQuantity = "aaaaaaaaaa";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void ItemQuantityMid()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string ItemQuantity = "aaaa";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalPriceMinLessOne()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string TotalPrice = "";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalPriceMin()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string TotalPrice = "a";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalPriceMinPlusOne()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string TotalPrice = "aa";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalPriceMaxLessOne()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string TotalPrice = "aaaaaaaaaa";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void TotalPriceMax()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string TotalPrice = "aaaaaaaaa";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreEqual(Error, "");
+        }
+        
+        [TestMethod]
+        public void TotalPriceMaxPlusOne()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string TotalPrice = "aaaaaaaaaa";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreNotEqual(Error, "");
+        }
+        [TestMethod]
+        public void TotalPriceMid()
+        {
+            clsOrders AnOrder = new clsOrders();
+            String Error = "";
+            string TotalPrice = "aaaa";
+            Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
+            Assert.AreEqual(Error, "");
+        } 
     }
 }
