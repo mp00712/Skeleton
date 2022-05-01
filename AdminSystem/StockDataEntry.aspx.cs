@@ -8,8 +8,29 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 StockID;
     protected void Page_Load(object sender, EventArgs e)
     {
+        StockID = Convert.ToInt32(Session["StockID"]);
+        if (IsPostBack == false)
+        {
+            if (StockID != -1)
+            {
+                DisplayStock();
+            }
+        }
+        
+    }
+
+     void DisplayStock()
+    {
+        clsStockcollection StockBook = new clsStockcollection();
+        StockBook.ThisStock.Find(StockID);
+        txtStockID.Text = StockBook.ThisStock.StockID.ToString();
+        txtStockName.Text = StockBook.ThisStock.StockName;
+        txtItemQuantity.Text = StockBook.ThisStock.ItemQuantity.ToString();
+        txtTotalPrice.Text = StockBook.ThisStock.TotalPrice.ToString();
+        txtRestockDate.Text = StockBook.ThisStock.RestockDate.ToString();
 
     }
 
@@ -26,6 +47,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = AnStock.Valid(StockID, StockName, ItemQuantity, TotalPrice, RestockDate);
         if (Error == "")
         {
+
             AnStock.StockID = Convert.ToInt32(StockID);
             AnStock.StockName = StockName;
             AnStock.ItemQuantity = Convert.ToInt32(ItemQuantity);
@@ -34,10 +56,17 @@ public partial class _1_DataEntry : System.Web.UI.Page
             AnStock.Active = Convert.ToBoolean(StockAvailability);
 
             clsStockcollection StockList = new clsStockcollection();
-            StockList.ThisStock = AnStock;
-            StockList.Add();
-            Response.Redirect("StockViewer.aspx");
-            
+            if (Convert.ToInt32(StockID) == -1)
+            {
+                StockList.ThisStock = AnStock;
+                StockList.Add();
+            }
+            else
+            {
+                StockList.ThisStock.Find(Convert.ToInt32(StockID));
+                StockList.ThisStock = AnStock;
+                StockList.Update();
+            }
         }
 
         else

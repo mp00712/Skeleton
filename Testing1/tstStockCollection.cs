@@ -77,7 +77,7 @@ namespace Test_Framework
             clsStockcollection AllStock = new clsStockcollection();
             clsStock TestItem = new clsStock();
             Int32 PrimaryKey = 0;
-            TestItem.Active = true;
+            TestItem.StockAvailability = true;
             TestItem.StockID = 2;
             TestItem.StockName = "Hand Sanitizer";
             TestItem.ItemQuantity = 50;
@@ -91,5 +91,57 @@ namespace Test_Framework
             Assert.AreEqual(AllStock.ThisStock, TestItem);
         }
 
+        public void UpdateMethod()
+        {
+            clsStockcollection AllStock = new clsStockcollection();
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+            TestItem.StockAvailability = true;
+            TestItem.StockID = 2;
+            TestItem.StockName = "Hand Sanitizer";
+            TestItem.ItemQuantity = 50;
+            TestItem.TotalPrice = 3;
+            TestItem.RestockDate = DateTime.Now.Date;
+
+            AllStock.ThisStock = TestItem;
+            PrimaryKey = AllStock.Add();
+            TestItem.StockID = PrimaryKey;
+
+            TestItem.StockAvailability = false;
+            TestItem.StockID = 3;
+            TestItem.StockName = "Covid Hand Sanitizer";
+            TestItem.ItemQuantity = 100;
+            TestItem.TotalPrice = 5;
+            TestItem.RestockDate = DateTime.Now.Date;
+
+            AllStock.ThisStock = TestItem;
+            AllStock.Update();
+            AllStock.ThisStock.Find(PrimaryKey);
+            Assert.AreEqual(AllStock.ThisStock, TestItem);
+        }
+
+        [TestMethod]
+        public void DeleteMethodOK()
+        {
+            clsStockcollection AllStock = new clsStockcollection();
+            clsStock TestItem = new clsStock();
+            Int32 PrimaryKey = 0;
+            TestItem.StockAvailability = true;
+            TestItem.StockID = 2;
+            TestItem.StockName = "Hand Sanitizer";
+            TestItem.ItemQuantity = 50;
+            TestItem.TotalPrice = 3;
+            TestItem.RestockDate = DateTime.Now.Date;
+
+            AllStock.ThisStock = TestItem;
+            PrimaryKey = AllStock.Add();
+            TestItem.StockID = PrimaryKey;
+
+            AllStock.ThisStock.Find(PrimaryKey);
+            AllStock.Delete();
+            Boolean Found = AllStock.ThisStock.Find(PrimaryKey);
+            Assert.IsFalse(Found);
+
+        }
     }
 }
