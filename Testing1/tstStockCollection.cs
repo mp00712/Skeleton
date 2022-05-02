@@ -91,6 +91,7 @@ namespace Test_Framework
             Assert.AreEqual(AllStock.ThisStock, TestItem);
         }
 
+        [TestMethod]
         public void UpdateMethod()
         {
             clsStockcollection AllStock = new clsStockcollection();
@@ -143,5 +144,23 @@ namespace Test_Framework
             Assert.IsFalse(Found);
 
         }
+
+        [TestMethod]
+        public void ReportbyStockNameMethodOK()
+        {
+            clsStockcollection AllStock = new clsStockcollection();
+            clsStockcollection FilteredStock = new clsStockcollection();
+            FilteredStock.ReportbyStockName("");
+            Assert.AreEqual(AllStock.Count, FilteredStock.Count);
+        }
+
+        [TestMethod]
+        public void ReportbyStockNameNoneFound()
+        {
+            clsStockcollection FilteredStock = new clsStockcollection();
+            FilteredStock.ReportbyStockName("xxxxxx xxxxxx");
+            Assert.AreEqual(0, FilteredStock.Count);
+        }
+
     }
 }

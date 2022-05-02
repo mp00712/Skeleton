@@ -85,6 +85,7 @@ namespace ClassLibrary
         public void Update()
         {
             clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StockID", mThisStock.StockID);
             DB.AddParameter("@StockName", mThisStock.StockName);
             DB.AddParameter("@ItemQuantity", mThisStock.ItemQuantity);
             DB.AddParameter("@TotalPrice", mThisStock.TotalPrice);
@@ -100,6 +101,11 @@ namespace ClassLibrary
             clsDataConnection DB = new clsDataConnection();
             DB.AddParameter("@StockID", mThisStock.StockID);
             DB.Execute("sproc_tblStock_Delete");
+        }
+
+        public void ReportbyStockName(string StockName)
+        {
+
         }
     }
 
