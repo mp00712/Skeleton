@@ -50,25 +50,12 @@ namespace ClassLibrary
 
         public clsStockcollection()
         {
-                Int32 Index = 0;
-                Int32 RecordCount = 0;
-                clsDataConnection DB = new clsDataConnection();
-                DB.Execute("sproc_tblStock_SelectAll");
-                RecordCount = DB.Count;
-                while (Index < RecordCount)
-                {
-                    clsStock AnStock = new clsStock();
-                    AnStock.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["StockAvailability"]);
-                    AnStock.StockID = Convert.ToInt32(DB.DataTable.Rows[Index]["StockID"]);
-                    AnStock.StockName = Convert.ToString(DB.DataTable.Rows[Index]["StockName"]);
-                    AnStock.ItemQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["ItemQuantity"]);
-                    AnStock.TotalPrice = Convert.ToInt32(DB.DataTable.Rows[Index]["TotalPrice"]);
-                    AnStock.RestockDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["RestockDate"]);
-                    mStockList.Add(AnStock);
-                    Index++;
-                }
+            clsDataConnection DB = new clsDataConnection();
+            DB.Execute("sproc_tblStock_SelectAll");
+            PopulateArray(DB);
 
-            }
+        }
+
 
         public int Add()
         {
@@ -105,8 +92,34 @@ namespace ClassLibrary
 
         public void ReportbyStockName(string StockName)
         {
-
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StockName", StockName);
+            DB.Execute("sproc_tblStock_FilterbyStockName");
+            PopulateArray(DB);
         }
-    }
 
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
+            RecordCount = DB.Count;
+            mStockList = new List<clsStock>();
+            while (Index < RecordCount)
+            {
+                clsStock AnStock = new clsStock();
+                AnStock.Active = Convert.ToBoolean(DB.DataTable.Rows[Index]["StockAvailability"]);
+                AnStock.StockID = Convert.ToInt32(DB.DataTable.Rows[Index]["StockID"]);
+                AnStock.StockName = Convert.ToString(DB.DataTable.Rows[Index]["StockName"]);
+                AnStock.ItemQuantity = Convert.ToInt32(DB.DataTable.Rows[Index]["ItemQuantity"]);
+                AnStock.TotalPrice = Convert.ToInt32(DB.DataTable.Rows[Index]["TotalPrice"]);
+                AnStock.RestockDate = Convert.ToDateTime(DB.DataTable.Rows[Index]["RestockDate"]);
+                mStockList.Add(AnStock);
+                Index++;
+
+            }
+        }
+
+
+   
+        }
     }

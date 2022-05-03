@@ -158,8 +158,34 @@ namespace Test_Framework
         public void ReportbyStockNameNoneFound()
         {
             clsStockcollection FilteredStock = new clsStockcollection();
-            FilteredStock.ReportbyStockName("xxxxxx xxxxxx");
+            FilteredStock.ReportbyStockName("xxxxx xxxxxxx");
             Assert.AreEqual(0, FilteredStock.Count);
+        }
+
+        [TestMethod]
+        public void ReportbyStockNameDataFound()
+        {
+            clsStockcollection FilteredStock = new clsStockcollection();
+            Boolean OK = true;
+            FilteredStock.ReportbyStockName("Covid Faceshield");
+            if (FilteredStock.Count == 2)
+            {
+                if (FilteredStock.StockList[1].StockName != "Covid Mask")
+                {
+                    OK = false;
+                }
+
+                if (FilteredStock.StockList[2].StockName !="Hand Sanitizer")
+                {
+                    OK = false;
+                }
+            }
+
+            else
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
 
     }
