@@ -81,7 +81,7 @@ namespace Testing4
         {
             clsOrders AnOrder = new clsOrders();
             Boolean Found = false;
-            Int32 OrderID = 1;
+            Int32 OrderID = 5;
             Found = AnOrder.Find(OrderID);
             Assert.IsTrue(Found);
         }
