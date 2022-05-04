@@ -151,7 +151,7 @@ namespace Testing4
             clsOrders AnOrder = new clsOrders();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 1;
+            Int32 OrderID = 5;
             Found = AnOrder.Find(OrderID);
             if (AnOrder.OrderDate != Convert.ToDateTime("20/02/2022"))
             {
@@ -166,7 +166,7 @@ namespace Testing4
             clsOrders AnOrder = new clsOrders();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 1;
+            Int32 OrderID = 5;
             Found = AnOrder.Find(OrderID);
             if (AnOrder.Shipment != true)
             {
