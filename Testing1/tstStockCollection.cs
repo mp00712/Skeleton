@@ -167,15 +167,15 @@ namespace Test_Framework
         {
             clsStockcollection FilteredStock = new clsStockcollection();
             Boolean OK = true;
-            FilteredStock.ReportbyStockName("Covid Faceshield");
+            FilteredStock.ReportbyStockName("Black Covid Mask");
             if (FilteredStock.Count == 2)
             {
-                if (FilteredStock.StockList[1].StockName != "Covid Mask")
+                if (FilteredStock.StockList[0].StockID != 106)
                 {
                     OK = false;
                 }
 
-                if (FilteredStock.StockList[2].StockName !="Hand Sanitizer")
+                if (FilteredStock.StockList[1].StockID != 107)
                 {
                     OK = false;
                 }
