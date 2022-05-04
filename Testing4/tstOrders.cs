@@ -91,9 +91,9 @@ namespace Testing4
             clsOrders AnOrder = new clsOrders();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 1;
+            Int32 OrderID = 5;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.OrderID != 1)
+            if (AnOrder.OrderID != 5)
             {
                 OK = false;
             }
@@ -106,7 +106,7 @@ namespace Testing4
             clsOrders AnOrder = new clsOrders();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 1;
+            Int32 OrderID = 5;
             Found = AnOrder.Find(OrderID);
             if (AnOrder.StockID != 1)
             {
@@ -121,9 +121,9 @@ namespace Testing4
             clsOrders AnOrder = new clsOrders();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 1;
+            Int32 OrderID = 5;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.ItemQuantity != 2)
+            if (AnOrder.ItemQuantity != 6)
             {
                 OK = false;
             }
@@ -136,9 +136,9 @@ namespace Testing4
             clsOrders AnOrder = new clsOrders();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderID = 1;
+            Int32 OrderID = 5;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.TotalPrice != 4)
+            if (AnOrder.TotalPrice != 20)
             {
                 OK = false;
             }
@@ -153,7 +153,7 @@ namespace Testing4
             Boolean OK = true;
             Int32 OrderID = 1;
             Found = AnOrder.Find(OrderID);
-            if (AnOrder.OrderDate != Convert.ToDateTime("30/03/2022"))
+            if (AnOrder.OrderDate != Convert.ToDateTime("20/02/2022"))
             {
                 OK = false;
             }
@@ -346,7 +346,7 @@ namespace Testing4
         {
             clsOrders AnOrder = new clsOrders();
             String Error = "";
-            string ItemQuantity = "a";
+            string ItemQuantity = "1";
             Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -355,7 +355,7 @@ namespace Testing4
         {
                 clsOrders AnOrder = new clsOrders();
                 String Error = "";
-                string ItemQuantity = "aa";
+                string ItemQuantity = "2";
                 Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
                 Assert.AreEqual(Error, "");
         }
@@ -364,7 +364,7 @@ namespace Testing4
         {
             clsOrders AnOrder = new clsOrders();
             String Error = "";
-            string ItemQuantity = "aaaaaaaa";
+            string ItemQuantity = "49";
             Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -373,7 +373,7 @@ namespace Testing4
         {
             clsOrders AnOrder = new clsOrders();
             String Error = "";
-            string ItemQuantity = "aaaaaaaaa";
+            string ItemQuantity = "50";
             Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
             Assert.AreEqual(Error, "");
         }
@@ -382,7 +382,8 @@ namespace Testing4
         {
             clsOrders AnOrder = new clsOrders();
             String Error = "";
-            string ItemQuantity = "aaaaaaaaaa";
+            string ItemQuantity = "";
+            ItemQuantity = ItemQuantity.PadRight(51, 'a');
             Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
             Assert.AreNotEqual(Error, "");
         }
