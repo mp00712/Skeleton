@@ -433,7 +433,7 @@ namespace Testing4
         {
             clsOrders AnOrder = new clsOrders();
             String Error = "";
-            string TotalPrice = "aaaaaaaaaa";
+            string TotalPrice = "aaaaaaaa";
             Error = AnOrder.Valid(StockID, ItemQuantity, TotalPrice, OrderDate);
             Assert.AreEqual(Error, "");
         }

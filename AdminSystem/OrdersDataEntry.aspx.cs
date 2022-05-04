@@ -13,7 +13,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         {
-            txtStockID.Text = Session["STOCKID"].ToString();
+            txtStockID.Text = Session["StockID"].ToString();
 
 
             OrderID = Convert.ToInt32(Session["OrderID"]);
