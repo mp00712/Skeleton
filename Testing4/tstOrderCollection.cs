@@ -2,10 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using Testing4;
 
 namespace TestingOrders
@@ -93,11 +89,11 @@ namespace TestingOrders
             Int32 PrimaryKey = 0;
 
             TestOrder.Shipment = true;
-            TestOrder.OrderID = 6;
-            TestOrder.StockID = 2;
+            TestOrder.OrderID = 7;
+            TestOrder.StockID = 3;
             TestOrder.OrderDate = DateTime.Now.Date;
-            TestOrder.ItemQuantity  = 2;
-            TestOrder.TotalPrice = 30;
+            TestOrder.ItemQuantity  = 4;
+            TestOrder.TotalPrice = 8;
             
 
             AllOrders.ThisOrder = TestOrder;
@@ -120,10 +116,10 @@ namespace TestingOrders
             Int32 PrimaryKey = 0;
 
             TestOrder.Shipment = true;
-            TestOrder.StockID = 2;
+            TestOrder.StockID = 3;
             TestOrder.OrderDate = DateTime.Now.Date;
-            TestOrder.ItemQuantity = 2;
-            TestOrder.TotalPrice = 30;
+            TestOrder.ItemQuantity = 4;
+            TestOrder.TotalPrice = 8;
 
             AllOrders.ThisOrder = TestOrder;
 
@@ -132,10 +128,10 @@ namespace TestingOrders
             TestOrder.OrderID = PrimaryKey;
 
             TestOrder.Shipment = false;
-            TestOrder.StockID = 3;
+            TestOrder.StockID = 90;
             TestOrder.OrderDate = DateTime.Now.Date;
-            TestOrder.ItemQuantity = 4;
-            TestOrder.TotalPrice = 8;
+            TestOrder.ItemQuantity = 2;
+            TestOrder.TotalPrice = 80;
 
             AllOrders.ThisOrder = TestOrder;
 
@@ -197,7 +193,7 @@ namespace TestingOrders
         }
 
         [TestMethod]
-        public void ResportByCustomerIDTestDataFound()
+        public void ResportByStockIDTestDataFound()
         {
             clsOrderCollection FilteredOrders = new clsOrderCollection();
 

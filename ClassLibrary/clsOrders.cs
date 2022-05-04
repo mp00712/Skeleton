@@ -144,7 +144,7 @@ namespace ClassLibrary
                 Error = Error + "The ItemQuantity no may not be blank : ";
             }
 
-            if (ItemQuantity.Length > 100)
+            if (ItemQuantity.Length > 50)
             {
                 Error = Error + "The ItemQuantity must be less than 100 characters :";
             }
@@ -152,7 +152,7 @@ namespace ClassLibrary
             {
                 Error = Error + "The TotalPrice no may not be blank : ";
             }
-            if (TotalPrice.Length > 10000)
+            if (TotalPrice.Length > 9)
             {
                 Error = Error + "The TotalPrice must be less than 10000 characters :";
             }

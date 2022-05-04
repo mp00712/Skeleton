@@ -13,13 +13,13 @@ public partial class _1_DataEntry : System.Web.UI.Page
     protected void Page_Load(object sender, EventArgs e)
     {
         {
-            txtStockID.Text = Session["sTOCKID"].ToString();
+            txtStockID.Text = Session["STOCKID"].ToString();
 
 
             OrderID = Convert.ToInt32(Session["OrderID"]);
 
             clsDataConnection DB = new clsDataConnection();
-            DB.Execute("sproc_tblProduct_SelectAll");
+            DB.Execute("sproc_tblOrders_SelectAll");
 
             if (IsPostBack == false)
             {
