@@ -4,14 +4,15 @@ using ClassLibrary;
 
 namespace Testing6
 {
-    [TestClass]
-    public class tstStock
-    {
         string StockID = "2";
         string StockName = "Hand Sanitizer";
         string ItemQuantity = "50";
         string TotalPrice = "3";
         string RestockDate = DateTime.Now.Date.ToString();
+        
+    [TestClass]
+    public class tstStock
+    {
         
         [TestMethod]
         public void InstanceOK()

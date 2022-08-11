@@ -1,12 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ClassLibrary
 {
-    class clsStaff
+    public class clsStaff
     {
+        public int StaffID { get; internal set; }
+        public string StaffName { get; internal set; }
+        public bool IsStaff { get; internal set; }
+        public DateTime DateCreated { get; internal set; }
+        public int Salary { get; internal set; }
+        public string StaffEmail { get; internal set; }
     }
 }
