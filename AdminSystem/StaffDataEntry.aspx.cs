@@ -11,4 +11,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
 
     }
+
+    protected void BtnOK_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("StaffViewer.aspx");
+    }
 }
