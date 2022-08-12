@@ -17,14 +17,14 @@
             <asp:TextBox ID="txtStaffEmail" runat="server"></asp:TextBox>
         </p>
         <asp:Label ID="lblStaffName" runat="server" Text="Staff Name " width="67px"></asp:Label>
-        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtStaffName" runat="server"></asp:TextBox>
         <p>
             <asp:Label ID="lblDateCreated" runat="server" Text="Date Created " width="67px"></asp:Label>
-            <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtDateCreated" runat="server"></asp:TextBox>
         </p>
         <p>
             <asp:Label ID="lblSalary" runat="server" Text="Salary " width="67px"></asp:Label>
-            <asp:TextBox ID="TextBox4" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtSalary" runat="server"></asp:TextBox>
         </p>
         <asp:CheckBox ID="chkIsAdmin" runat="server" Text="Admin" />
         <p>
