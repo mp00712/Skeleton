@@ -101,7 +101,7 @@ namespace Testing2
         
             clsStaff AnStaff = new clsStaff();
             bool Found = false;
-            Int32 StaffID = 21;
+            Int32 StaffID = 2;
             Found = AnStaff.Find(StaffID);
             Assert.IsTrue(Found);
         }
@@ -115,11 +115,11 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 21;
+            Int32 StaffID = 2;
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //check the staff ID
-            if (AnStaff.StaffID != 21)
+            if (AnStaff.StaffID != 2)
             {
                 OK = false;
             }
@@ -136,11 +136,11 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 21;
+            Int32 StaffID = 2;
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //check the property
-            if (AnStaff.StaffName != "Chris Smith")
+            if (AnStaff.StaffName != "Tommy Smith")
             {
                 OK = false;
             }
@@ -159,7 +159,7 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 21;
+            Int32 StaffID = 2;
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //check the property
@@ -180,7 +180,7 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 21;
+            Int32 StaffID = 2;
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //check the property
@@ -201,11 +201,11 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 21;
+            Int32 StaffID = 2;
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //check the property
-            if (AnStaff.Salary != 1)
+            if (AnStaff.Salary != 24000)
             {
                 OK = false;
             }
@@ -223,7 +223,7 @@ namespace Testing2
             //boolean variable to record if data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 StaffID = 21;
+            Int32 StaffID = 2;
             //invoke the method
             Found = AnStaff.Find(StaffID);
             //check the property
