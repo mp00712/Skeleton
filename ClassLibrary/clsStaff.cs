@@ -81,13 +81,24 @@ namespace ClassLibrary
         }
         public bool Find(int staffID)
         {
-            mStaffID = 21;
-            mStaffName = "Chris Smith";
-            mIsAdmin = true;
-            mDateCreated = Convert.ToDateTime("18/02/2013");
-            mSalary = 1;
-            mStaffEmail = "Tommy@gmail.com";
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffID", StaffID);
+            DB.Execute("sproc_tblStaff_FilterByStaffID");
+            if (DB.Count == 1)
+            {
+                mStaffID = Convert.ToInt32(DB.DataTable.Rows[0]["StaffID"]);
+                mStaffName = Convert.ToString(DB.DataTable.Rows[0]["StaffName"]);
+                mIsAdmin = Convert.ToBoolean(DB.DataTable.Rows[0]["IsAdmin"]);
+                mDateCreated = Convert.ToDateTime(DB.DataTable.Rows[0]["DateCreated"]);
+                mSalary = Convert.ToInt32(DB.DataTable.Rows[0]["Salary"]);
+                mStaffEmail = Convert.ToString(DB.DataTable.Rows[0]["StaffEmail"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
 
         
